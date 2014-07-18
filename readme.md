@@ -1,6 +1,5 @@
 ##README
 
----
 
 ###Quick strat
 
