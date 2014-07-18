@@ -1,0 +1,20 @@
+.modal-footer {
+	border-top: none; 
+}
+a.cancel{
+	margin-top: 15px;
+}
+.gPush{
+	color: #000;
+}
+.gName{
+	font-size: 18px;
+}
+.gMessage{
+	color: olive;
+}
+.gDate{
+	text-align: right;
+	color: green;
+	float: right;
+}

@@ -1,0 +1,48 @@
+<% include header.ejs %>
+
+<% if (!user) { %>
+	<script> document.location.href="/login" </script>
+<% } else { %>
+	<h2>Hello, <%= user.username %>.</h2>
+  <form class="form col-md-12 center-block" action="/" method="post">
+  	<div class="input-group">
+		  <span class="input-group-addon"><%= user.username %> 說：</span>
+		  <input type="text" name="comment" class="form-control" placeholder="你想要說？" required>
+		</div>
+    <input type="hidden" name="username" value="<%= user.username %>">
+    <input type="hidden" name="date" value="">
+	</form>
+	<div style="clear:both"></div>
+	<hr>
+	<div class="commentBox" >
+		<ul class="list-group">
+			<% for(var i=0; i<guestbook.length; i++) {%>
+			   <li class="list-group-item list-group-item-info">
+				   <span class="gPush">&rarr;</span>
+				   <span class="gName"><%= guestbook[i].username %></span>
+				   <span class="gMessage">: <%= guestbook[i].message %></span>
+				   <span class="gDate">
+						<%= guestbook[i].updated_at.getMonth() + 1%>/<%= guestbook[i].updated_at.getDate() %> 
+				   	<%= guestbook[i].updated_at.getHours() %>:<%= guestbook[i].updated_at.getMinutes() %>
+				   </span>
+			   </li>
+			<% } %>
+		</ul>
+	</div>
+<% } %>
+<script>
+$(function(){
+	// var user = $(":input[name=username]");
+	// var comment = $(":input[name=comment]");
+	// $('form').on('submit',function( e ) {
+	// 	$('.list-group')
+	// 		.prepend('<li class="list-group-item list-group-item-info">' + 
+	// 			'	<span style="color: #000">&rarr;</span> <span style="font-size: 18px;">' + user.val()+ '</span><span style="color: olive;">: ' + comment.val() + 
+	// 			'</span></li>');
+		// $(':input[name=comment]').val('');
+		// e.preventDefault();
+	})
+})
+	
+</script>
+<% include footer.ejs %>
